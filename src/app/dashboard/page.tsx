@@ -14,11 +14,10 @@ export default function Dashboard() {
         const response = await fetch("/api/user");
         if (response.ok) {
           const data = await response.json();
-          setUsername(data.username);
-          setPassword(data.password);
+ router.push("/");
         } else {
           // If not authenticated, redirect to login
-          router.push("/");
+         
         }
       } catch (error) {
         console.error("Failed to fetch user data", error);
