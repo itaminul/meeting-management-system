@@ -15,7 +15,7 @@ const menuItems = [
     title: "Users",
     href: "/dashboard/users",
     submenu: [
-      { title: "All Users", href: "/dashboard/users" },
+      { title: "All Users", href: "/dashboard/components/employee" },
       { title: "Add User", href: "/dashboard/users/add" },
     ],
   },
