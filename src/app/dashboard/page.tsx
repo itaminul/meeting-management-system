@@ -51,7 +51,7 @@ export default function Dashboard() {
             <div className="divide-y divide-gray-200">
               <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                 <p>Username: {username}</p>
-                <p>Password: {password}</p>
+                <p>Password:ddd {password}</p>
               </div>
               <div className="pt-6 text-base leading-6 font-bold sm:text-lg sm:leading-7">
                 <button
