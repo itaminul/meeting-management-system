@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Layout from "../dashboard/layout";
+import { StatCard } from "../dashboard/components/card/stat-card";
+import { BarChart3, Clock, DollarSign, Users } from "lucide-react";
+import { ProfileCard } from "../dashboard/components/card/profile-card";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -23,58 +27,52 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
-          </h2>
-        </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <input type="hidden" name="remember" value="true" />
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <label htmlFor="username" className="sr-only">
-                Username
-              </label>
-              <input
-                id="username"
-                name="username"
-                type="text"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-          </div>
+    <Layout>
+      <h1 className="text-3xl font-semibold mb-6">Dashboard Overview</h1>
 
-          <div>
-            <button
-              type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Sign in
-            </button>
-          </div>
-        </form>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <StatCard
+          title="Total Revenue"
+          value="$45,231"
+          icon={<DollarSign size={24} />}
+          bgColor="bg-green-500"
+          textColor="text-white"
+        />
+        <StatCard
+          title="Active Users"
+          value="1,257"
+          icon={<Users size={24} />}
+          bgColor="bg-blue-500"
+          textColor="text-white"
+        />
+        <StatCard
+          title="New Clients"
+          value="32"
+          icon={<BarChart3 size={24} />}
+          bgColor="bg-yellow-500"
+          textColor="text-white"
+        />
+        <StatCard
+          title="Avg. Response Time"
+          value="1.5 hours"
+          icon={<Clock size={24} />}
+          bgColor="bg-purple-500"
+          textColor="text-white"
+        />
       </div>
-    </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2">
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
+            {/* Add a chart or activity feed here */}
+            <div className="h-64 bg-gray-200 rounded-lg"></div>
+          </div>
+        </div>
+        <div>
+          <ProfileCard />
+        </div>
+      </div>
+    </Layout>
   );
 }
